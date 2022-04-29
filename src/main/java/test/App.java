@@ -29,6 +29,12 @@ public class App {
         Logger logger = LogManager.getLogger(App.class);
         logger.error("LOG MESSAGE");
 
+        //Spark default olarak 4567.porttan çalışır. Heroku ise kendisi sanal makineden bir port seçecek. Bu yüzden port ayarlamamız gerekiyor.
+        int port=Integer.parseInt(System.getenv("PORT"));
+        port(port);
+        logger.error("Current port number: "+port); 
+
+
         get("/", (req, res) -> "Hello, World");
 
         
